@@ -2,6 +2,8 @@ package com.payment.payment.service.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -10,6 +12,7 @@ import com.payment.payment.entity.EntityBase;
 import com.payment.payment.service.ServiceBase;
 
 @Service
+@Transactional
 public abstract class ServiceBaseImpl<E extends EntityBase, T>
 	implements ServiceBase<E, T> {
 	
