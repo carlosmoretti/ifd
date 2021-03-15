@@ -18,27 +18,27 @@ public abstract class BaseController<E extends EntityBase, T> {
 	abstract ServiceBase<E, T> getServiceBase(); 
 	
 	@GetMapping()
-	private List<E> obterTodos() {
+	public List<E> obterTodos() {
 		return getServiceBase().obterTodos();
 	}
 	
 	@GetMapping("/{id}")
-	private E obter(@PathVariable("id") T id) {
+	public E obter(@PathVariable("id") T id) {
 		return getServiceBase().obter(id);
 	}
 	
 	@PostMapping()
-	private void adicionar(@RequestBody() E obj) {
+	public void adicionar(@RequestBody() E obj) {
 		getServiceBase().cadastrar(obj);
 	}
 	
 	@PutMapping()
-	private void atualizar(@RequestBody() E obj) {
+	public void atualizar(@RequestBody() E obj) {
 		getServiceBase().atualizar(obj);
 	}
 	
 	@DeleteMapping()
-	private void remover(@RequestBody() E obj) {
+	public void remover(@RequestBody() E obj) {
 		getServiceBase().remover(obj);
 	}
 }
