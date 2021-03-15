@@ -1,11 +1,16 @@
 package com.payment.payment.entity;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.JoinColumn;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -37,4 +42,12 @@ public class Usuario extends EntityBase {
 	
 	@Column(name = "USU_TX_PASSWORD")
 	private String password;
+	
+	@ManyToMany()
+	@JoinTable(
+			name = "USUARIO_PERMISSAO",
+			joinColumns = @JoinColumn(name = "USU_CD_ID"),
+			inverseJoinColumns = @JoinColumn(name = "PERM_CD_ID"))
+	Set<Permissao> permissao;
+	
 }
