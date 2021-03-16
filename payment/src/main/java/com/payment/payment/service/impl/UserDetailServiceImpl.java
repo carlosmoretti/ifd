@@ -28,7 +28,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
 	@Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Usuario usuario = usuarioRepository.findByUsername(username);
-		List<GrantedAuthority> roles = usuario.getPermissao().stream().map(e -> new SimpleGrantedAuthority(e.getNome())).collect(Collectors.toList());
+		List<GrantedAuthority> roles = usuario.getPermissao().stream().map(e -> new SimpleGrantedAuthority("ROLE_" + e.getNome().toUpperCase())).collect(Collectors.toList());
         return new User(usuario.getUsername(), usuario.getPassword(), roles);
     }
 }
